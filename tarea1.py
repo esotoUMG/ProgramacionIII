@@ -2,39 +2,39 @@ import graphviz
 import os
 
 class Nodo:
-    def __init__(self, Nombre, Apellido):
+    def __init__(self, Nombre, Apellido): # NODO PRINCIPAL
         self.Nombre = Nombre
         self.Apellido = Apellido
         self.siguiente = None
         self.anterior = None
 
-class lista_doble_enlazada:
+class ListaDobleEnlazada:
     
     def __init__(self):
         self.cabeza = None
         self.cola = None
 
-    def insertarinicio(self, Nombre, Apellido):
-        nodonuevo = Nodo(Nombre, Apellido)
+    def insertar_inicio(self, Nombre, Apellido): # FUNCIÓN PARA INSERTAR DATOS AL INICIO DE LA LISTA
+        nuevo_nodo = Nodo(Nombre, Apellido)
         if self.cabeza is None:
-            self.cabeza = self.cola = nodonuevo
+            self.cabeza = self.cola = nuevo_nodo
         else: 
-            nodonuevo.siguiente = self.cabeza
-            self.cabeza.anterior = nodonuevo
-            self.cabeza = nodonuevo
+            nuevo_nodo.siguiente = self.cabeza
+            self.cabeza.anterior = nuevo_nodo
+            self.cabeza = nuevo_nodo
         self.visualizar()  
 
-    def insertarfinal(self, Nombre, Apellido):
-        nodonuevo = Nodo(Nombre, Apellido)
+    def insertar_final(self, Nombre, Apellido): # FUNCIÓN PARA INSERTAR DATOS AL FINAL DE LA LISTA
+        nuevo_nodo = Nodo(Nombre, Apellido)
         if self.cola is None:
-            self.cabeza = self.cola = nodonuevo
+            self.cabeza = self.cola = nuevo_nodo
         else: 
-            self.cola.siguiente = nodonuevo
-            nodonuevo.anterior = self.cola
-            self.cola = nodonuevo
+            self.cola.siguiente = nuevo_nodo
+            nuevo_nodo.anterior = self.cola
+            self.cola = nuevo_nodo
         self.visualizar()  
 
-    def eliminar(self, Nombre, Apellido):
+    def eliminar(self, Nombre, Apellido): # FUNCIÓN PARA ELIMINAR UN REGISTRO POR NOMBRE Y APELLIDO
         actual = self.cabeza
         while actual: 
             if actual.Nombre == Nombre and actual.Apellido == Apellido:
@@ -57,7 +57,7 @@ class lista_doble_enlazada:
         
         print(f"{Nombre} {Apellido} no ha sido encontrado.")
 
-    def mostrar(self):
+    def mostrar(self): # FUNCIÓN PARA MOSTRAR LOS DATOS EN LA TERMINAL
         actual = self.cabeza
         print("", end=" <- ")
         while actual:
@@ -65,7 +65,7 @@ class lista_doble_enlazada:
             actual = actual.siguiente
         print("")
 
-    def visualizar(self):
+    def visualizar(self): # FUNCIÓN PARA GENERAR EL GRÁFICO DE GRAPHVIZ EN EL ESCRITORIO
         dot = graphviz.Digraph('ListaDobleEnlazada', format='png')
         actual = self.cabeza
         
@@ -73,17 +73,17 @@ class lista_doble_enlazada:
             print("La lista está vacía.")
             return
         
-        prev_node = None
+        nodo_anterior = None
         i = 1
         while actual:
-            node_id = f'nodo{i}'
-            dot.node(node_id, f'{actual.Nombre} {actual.Apellido}')
+            nodo_id = f'nodo{i}'
+            dot.node(nodo_id, f'{actual.Nombre} {actual.Apellido}')
             
-            if prev_node:
-                dot.edge(prev_node, node_id, label='siguiente')
-                dot.edge(node_id, prev_node, label='anterior')
+            if nodo_anterior:
+                dot.edge(nodo_anterior, nodo_id, label='siguiente')
+                dot.edge(nodo_id, nodo_anterior, label='anterior')
             
-            prev_node = node_id
+            nodo_anterior = nodo_id
             actual = actual.siguiente
             i += 1
         
@@ -91,8 +91,8 @@ class lista_doble_enlazada:
         dot.render(ruta_guardado)
         print(f'La visualización se ha guardado como {ruta_guardado}.png')
 
-# MENU
-lista = lista_doble_enlazada()
+# MENÚ
+lista = ListaDobleEnlazada()
 while True: 
     print("\n----Menú----")
     print("1. Insertar al principio")
@@ -100,16 +100,16 @@ while True:
     print("3. Eliminar por nombre y apellido")
     print("4. Mostrar lista")
     print("5. Salir")
-    opcion = input("Seleccione una opcion: ")
+    opcion = input("Seleccione una opción: ")
 
     if opcion == '1':
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
-        lista.insertarinicio(nombre, apellido)
+        lista.insertar_inicio(nombre, apellido)
     elif opcion == '2':
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
-        lista.insertarfinal(nombre, apellido)
+        lista.insertar_final(nombre, apellido)
     elif opcion == '3':
         nombre = input("Ingrese el nombre a eliminar: ")
         apellido = input("Ingrese el apellido a eliminar: ")
