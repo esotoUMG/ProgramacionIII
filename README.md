@@ -19,6 +19,7 @@ El programa proporciona un menú interactivo en la terminal para realizar operac
 
 ## Visualización con Graphviz
 Cada vez que se realiza una inserción o eliminación, el programa genera automáticamente una imagen mostrando la estructura de la lista.
+El grafico se guarda en el escritorio de la computadora
 
 - La imagen se guarda en el escritorio con el nombre **"lista_doble_enlazada.png"**.
 - Las conexiones entre nodos reflejan la relación **doblemente enlazada** (siguiente ↔ anterior).
