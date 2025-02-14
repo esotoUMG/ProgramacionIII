@@ -87,7 +87,7 @@ class lista_doble_enlazada:
             actual = actual.siguiente
             i += 1
         
-        ruta_guardado = os.path.expanduser(f"~/Desktop/UNIVERSIDAD/5TO SEMESTRE/PROGRAMACION III/PROYECTOS/lista_doble_enlazada")
+        ruta_guardado = os.path.expanduser(f"~/Desktop/lista_doble_enlazada")
         dot.render(ruta_guardado)
         print(f'La visualización se ha guardado como {ruta_guardado}.png')
 
@@ -121,5 +121,3 @@ while True:
         break
     else:
         print("Opción no válida. Ingrese otra opción.")
-
-
