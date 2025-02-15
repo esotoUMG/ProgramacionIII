@@ -2,9 +2,10 @@ import graphviz
 import os
 
 class Nodo:
-    def __init__(self, Nombre, Apellido): # NODO PRINCIPAL
+    def __init__(self, Nombre, Apellido, Carnet): # NODO PRINCIPAL
         self.Nombre = Nombre
         self.Apellido = Apellido
+        self.Carnet = Carnet
         self.siguiente = None
         self.anterior = None
 
@@ -14,8 +15,8 @@ class ListaDobleEnlazada:
         self.cabeza = None
         self.cola = None
 
-    def insertar_inicio(self, Nombre, Apellido): # FUNCIÓN PARA INSERTAR DATOS AL INICIO DE LA LISTA
-        nuevo_nodo = Nodo(Nombre, Apellido)
+    def insertar_inicio(self, Nombre, Apellido, Carnet): # FUNCIÓN PARA INSERTAR DATOS AL INICIO DE LA LISTA
+        nuevo_nodo = Nodo(Nombre, Apellido, Carnet)
         if self.cabeza is None:
             self.cabeza = self.cola = nuevo_nodo
         else: 
@@ -24,8 +25,8 @@ class ListaDobleEnlazada:
             self.cabeza = nuevo_nodo
         self.visualizar()  
 
-    def insertar_final(self, Nombre, Apellido): # FUNCIÓN PARA INSERTAR DATOS AL FINAL DE LA LISTA
-        nuevo_nodo = Nodo(Nombre, Apellido)
+    def insertar_final(self, Nombre, Apellido, Carnet): # FUNCIÓN PARA INSERTAR DATOS AL FINAL DE LA LISTA
+        nuevo_nodo = Nodo(Nombre, Apellido, Carnet)
         if self.cola is None:
             self.cabeza = self.cola = nuevo_nodo
         else: 
@@ -34,34 +35,46 @@ class ListaDobleEnlazada:
             self.cola = nuevo_nodo
         self.visualizar()  
 
-    def eliminar(self, Nombre, Apellido): # FUNCIÓN PARA ELIMINAR UN REGISTRO POR NOMBRE Y APELLIDO
+    def eliminar(self, Nombre, Apellido, Carnet): # FUNCIÓN PARA ELIMINAR UN REGISTRO POR NOMBRE Y APELLIDO
         actual = self.cabeza
         while actual: 
-            if actual.Nombre == Nombre and actual.Apellido == Apellido:
+            # if actual.Nombre == Nombre and actual.Apellido == Apellido:
+            #     if actual.anterior:
+            #         actual.anterior.siguiente = actual.siguiente
+            #     else: 
+            #         self.cabeza = actual.siguiente
+
+            #     if actual.siguiente:
+            #         actual.siguiente.anterior = actual.anterior
+            #     else: 
+            #         self.cola = actual.anterior
+
+            #     del actual
+            #     print(f"{Nombre} {Apellido} ha sido eliminado.")
+            #     self.visualizar()  
+            #     return
+            if actual.Carnet == Carnet:
                 if actual.anterior:
                     actual.anterior.siguiente = actual.siguiente
-                else: 
-                    self.cabeza = actual.siguiente
-
+                else:
+                    self.cabeza=actual.siguiente
+                
                 if actual.siguiente:
                     actual.siguiente.anterior = actual.anterior
-                else: 
-                    self.cola = actual.anterior
-
+                else:
+                    self.cola=actual.anterior
                 del actual
-                print(f"{Nombre} {Apellido} ha sido eliminado.")
-                self.visualizar()  
+                print(f"{Nombre} {Apellido} \n{Carnet} ha sido eliminado.")
+                self.visualizar()
                 return
-
             actual = actual.siguiente
-        
         print(f"{Nombre} {Apellido} no ha sido encontrado.")
 
     def mostrar(self): # FUNCIÓN PARA MOSTRAR LOS DATOS EN LA TERMINAL
         actual = self.cabeza
         print("", end=" <- ")
         while actual:
-            print(f"{actual.Nombre} {actual.Apellido}", end=" <-> ")
+            print(f"{actual.Nombre} {actual.Apellido} {actual.Carnet}", end=" <-> \n")
             actual = actual.siguiente
         print("")
 
@@ -77,7 +90,7 @@ class ListaDobleEnlazada:
         i = 1
         while actual:
             nodo_id = f'nodo{i}'
-            dot.node(nodo_id, f'{actual.Nombre} {actual.Apellido}')
+            dot.node(nodo_id, f'{actual.Nombre} {actual.Apellido} {actual.Carnet}')
             
             if nodo_anterior:
                 dot.edge(nodo_anterior, nodo_id, label='siguiente')
@@ -111,20 +124,21 @@ while True:
         os.system("cls")
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
-        lista.insertar_inicio(nombre, apellido)
+        carnet = input("Ingrese un numero de carnet: ")
+        lista.insertar_inicio(nombre, apellido, carnet)
         lista.pausar()
     elif opcion == '2':
         os.system("cls")
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
-        lista.insertar_final(nombre, apellido)
+        carnet = input("Ingrese un numero de carnet: ")
+        lista.insertar_final(nombre, apellido,carnet)
         lista.pausar()
     elif opcion == '3':
         os.system("cls")
         lista.mostrar()
-        nombre = input("Ingrese el nombre a eliminar: ")
-        apellido = input("Ingrese el apellido a eliminar: ")
-        lista.eliminar(nombre, apellido)
+        carnet = input("Ingrese el numero de carnet a eliminar: ")
+        lista.eliminar(nombre, apellido, carnet)
         lista.pausar()
     elif opcion == '4':
         os.system("cls")
