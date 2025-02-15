@@ -38,6 +38,6 @@ Ingrese un apellido: Pérez
 ```
 
 ## Integrantes y participación
-- Edwin Soto 
-- Werner Ortiz
+- Edwin Soto           Participación 100%
+- Werner Ortiz         Participación 100%
 
