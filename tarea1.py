@@ -91,10 +91,15 @@ class ListaDobleEnlazada:
         dot.render(ruta_guardado)
         print(f'La visualización se ha guardado como {ruta_guardado}.png')
 
+    @staticmethod
+    def pausar ():
+        input("\nPresiona enter para continuar...")
+
 # MENÚ
 lista = ListaDobleEnlazada()
 while True: 
-    print("\n----Menú----")
+    os.system("cls")
+    print("----Menú----")
     print("1. Insertar al principio")
     print("2. Insertar al final")
     print("3. Eliminar por nombre y apellido")
@@ -103,21 +108,32 @@ while True:
     opcion = input("Seleccione una opción: ")
 
     if opcion == '1':
+        os.system("cls")
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
         lista.insertar_inicio(nombre, apellido)
+        lista.pausar()
     elif opcion == '2':
+        os.system("cls")
         nombre = input("Ingrese un nombre: ")
         apellido = input("Ingrese un apellido: ")
         lista.insertar_final(nombre, apellido)
+        lista.pausar()
     elif opcion == '3':
+        os.system("cls")
+        lista.mostrar()
         nombre = input("Ingrese el nombre a eliminar: ")
         apellido = input("Ingrese el apellido a eliminar: ")
         lista.eliminar(nombre, apellido)
+        lista.pausar()
     elif opcion == '4':
+        os.system("cls")
         lista.mostrar()
+        lista.pausar()
     elif opcion == '5':
+        os.system("cls")
         print("Saliendo....")
+        lista.pausar()
         break
     else:
         print("Opción no válida. Ingrese otra opción.")
