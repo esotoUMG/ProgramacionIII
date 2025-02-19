@@ -1,4 +1,4 @@
-# Calculadora de Operaciones Matemáticas en Python
+# Calculadora en Python
 
 Este proyecto es una calculadora de operaciones matemáticas simples implementadas en Python. Permite realizar diversas operaciones como la conversión de números a binario, contar los dígitos de un número, calcular la raíz cuadrada entera, convertir números romanos a decimales y sumar los números enteros hasta un valor dado.
 
@@ -58,3 +58,7 @@ Presiona enter para continuar...
 
 - El programa maneja números negativos y proporciona mensajes de error apropiados si se ingresan valores no válidos.
 - La opción de conversión de números romanos espera una entrada en mayúsculas (por ejemplo, "X", "IX", "M").
+
+## Integrantes y Participación
+-Edwin Soto // 9490-22-52 // 100%
+-Werner Ortiz // // 100%
