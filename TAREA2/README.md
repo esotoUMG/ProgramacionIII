@@ -60,5 +60,5 @@ Presiona enter para continuar...
 - La opción de conversión de números romanos espera una entrada en mayúsculas (por ejemplo, "X", "IX", "M").
 
 ## Integrantes y Participación
--Edwin Soto // 9490-22-52 // 100%
--Werner Ortiz // // 100%
+- Edwin Soto // 9490-22-52 // 100%
+- Werner Ortiz // // 100%
