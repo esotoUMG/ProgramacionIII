@@ -61,4 +61,4 @@ Presiona enter para continuar...
 
 ## Integrantes y Participación
 - Edwin Soto // 9490-22-52 // 100%
-- Werner Ortiz // // 100%
+- Werner Ortiz // 9490-20-1143 // 100%
