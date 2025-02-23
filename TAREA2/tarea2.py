@@ -13,26 +13,29 @@ def contar_digitos(numero): #CONTAR LOS DIGITOS
         return 0
     return 1 + contar_digitos(numero // 10)
 
-def raiz_cuadrada_entera(numero): #RAIZ CUADRADA ENTERA
+def raiz_cuadrada_entera(numero, candidato=None): #RAIZ CUADRADA ENTERA
     if numero < 0:
         return "Ingrese un número positivo"
-    return int(numero ** 0.5)
+    if candidato is None:
+        candidato = numero // 2
+    if candidato * candidato <= numero and (candidato + 1) * (candidato + 1) > numero:
+        return candidato
+    return raiz_cuadrada_entera(numero, candidato - 1)
 
 def convertir_a_decimal(romano): #CONVERSOR DE ROMANO A DECIMAL
     valores = {
         'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100,
         'D': 500, 'M': 1000
     }
-    total = 0
-    prev = 0
-    for letra in reversed(romano):
-        valor = valores.get(letra, 0)
+    def convertir(romano, index, total, prev):
+        if index < 0:
+            return total
+        valor = valores.get(romano[index], 0)
         if valor < prev:
-            total -= valor
+            return convertir(romano, index - 1, total - valor, valor)
         else:
-            total += valor
-        prev = valor
-    return total
+            return convertir(romano, index - 1, total + valor, valor)
+    return convertir(romano, len(romano) - 1, 0, 0)
 
 def suma_numeros_enteros(numero): #SUMA DE NUMEROS ENTEROS
     if numero < 0:
@@ -41,11 +44,9 @@ def suma_numeros_enteros(numero): #SUMA DE NUMEROS ENTEROS
         return 0
     return numero + suma_numeros_enteros(numero - 1)
 
-@staticmethod
 def limpiarconsola():
     os.system("cls" if os.name=="nt" else "clear")
 
-@staticmethod
 def pausar():
     input("\nPresiona enter para continuar...")
 
