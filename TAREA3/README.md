@@ -1,14 +1,4 @@
-
-           __        __       
-          |  \      |  \      
-  ______  | $$____  | $$____  
- |      \ | $$    \ | $$    \ 
-  \$$$$$$\| $$$$$$$\| $$$$$$$\
- /      $$| $$  | $$| $$  | $$
-|  $$$$$$$| $$__/ $$| $$__/ $$
- \$$    $$| $$    $$| $$    $$
-  \$$$$$$$ \$$$$$$$  \$$$$$$$ 
-                                                                                                                
+                                                                                                              
 PROYECTO: ARBOL BINARIO DE BUSQUEDA (ABB)
 ------------------------------------------------------------------------------------------
 Este proyecto es una implementacion de Arboles binarios de busqueda con funcionalidades para insertar, buscar, eliminar y visualizar en Graphviz, asi mismo permite poder cargar datos desde un archivo CSV. Todo esto en una interfaz CLI.
